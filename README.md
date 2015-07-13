@@ -16,7 +16,6 @@ After you start up Jekyll, you should then find the files `search-index.js` and 
 You can now use Lunr.js as described on their webpage. You can find two templates for a very simple search interface in `templates`:
  - `andy_search.js`: add this javascript to your Jekyll site. It queries the Lunr index and adds the results to a list.
  - `search_page.html`: this is a very simple search results page.
- - 
  
 The javascript in `andy_search.js` requires a search input field with a search button with specific ids:
 ```
