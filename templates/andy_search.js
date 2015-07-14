@@ -20,6 +20,15 @@ $.ajax({
     data: {}
 });
 
+$('#search_box').keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+    $("#search_button").click();
+    return false;  
+  }
+});  
+
 $("#search_button").click(function(event) {
 	div = $(this).closest('#search_div');
 	box = div.find("#search_box");
@@ -41,12 +50,15 @@ function show_results(catalog){
 
 	term = vars['query'];
 
+	$('#searchterm').html(term);
+
 	results = lunr_index.search(term);
 	
 	$.each(results, function(index, element) {
 		url = element.ref;
 		title = catalog[url]["title"];
 		excerpt = catalog[url]["excerpt"];
+		
 		var text = "<li><a href=\"{{ site.baseurl }}/" + url + "\">" + title + "</a><br>" + decodeURI(excerpt) + "</li>";
 		$("#search_results").append(text);
 	});
